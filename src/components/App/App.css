@@ -1,5 +1,6 @@
 .page {
   background-color: #ffffff;
+  position: relative;
 }
 
 /* стили для оболочки */

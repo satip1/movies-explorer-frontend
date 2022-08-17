@@ -1,0 +1,161 @@
+.register {
+  box-sizing: border-box;
+  max-width: 396px;
+  margin: 0 auto;
+}
+
+.register__h1 {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  color: #000000;
+  padding-top: 40px
+}
+
+.register__form {
+  padding-top: 40px;
+}
+
+.register__item {
+  padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+}
+
+.register__item:last-child {
+  padding-bottom: 0;
+}
+
+.register__label {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: #A0A0A0;
+  padding-bottom: 10px;
+}
+
+.register__input {
+  margin: 0;
+  outline: none;
+  border: none;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  color: #000000;
+  background: #F9F9F9;
+  border-radius: 8px;
+  width: 100%;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.register__error {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: #EE3465;
+  position: absolute;
+  bottom: -1px;
+}
+
+.register__formbtn {
+  box-sizing: border-box;
+  border: none;
+  width: 100%;
+  margin-top: 76px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #FFFFFF;
+  padding: 13px 124px 15px 126px;
+  background: #FF6838;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: .3s ease;
+}
+
+.register__formbtn:hover {
+  opacity: .8;
+}
+
+
+.register__reg {
+  padding-top: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.register__regtext {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #A0A0A0;
+  margin-right: 6px;
+}
+
+.register__regbtn {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #FF6838;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 768px) {
+  .register__formbtn {
+    margin-top: 71px;
+  }
+}
+
+
+@media screen and (max-width: 320px) {
+  .register {
+    max-width: 260px;
+  }
+
+  .register__h1 {
+    padding-top: 50px;
+    text-align: center;
+  }
+
+  .register__form {
+    padding-top: 80px;
+  }
+
+  .register__formbtn {
+    margin-top: 179px;
+    padding: 15px 67px 15px 68px;
+  }
+
+  .register__regtext {
+    font-size: 12px;
+    line-height: 15px;
+    margin-right: 7px;
+  }
+
+  .register__regbtn {
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+}

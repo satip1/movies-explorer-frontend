@@ -4,7 +4,7 @@ import './Techs.css';
 function Techs() {
     return (
         <div className="wrapper wrapper_gray">
-            <article className="texnologi">
+            <article className="texnologi" id="texnologi">
 
                 <section className="subtitle texnologi__subheader ">
                     <h2 className="subtitle__h2 texnologi__subh2 ">Технологии</h2>

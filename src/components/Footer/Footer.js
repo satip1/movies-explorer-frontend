@@ -9,11 +9,17 @@ function Footer() {
                     <h3 className="footer__subh3">Учебный проект Яндекс.Практикум х BeatFilm.</h3>
                 </section>
                 <section className="footer__copy">
-                    <p className="footer__text">&copy; 2022</p>
+                    <p className="footer__text">&copy; {new Date().getFullYear()}</p>
                     <ul className="footer__list">
-                        <li className="footer__item">Яндекс.Практикум</li>
-                        <li className="footer__item">Github</li>
-                        <li className="footer__item">Facebook</li>
+                        <li className="footer__item">
+                            <a href="https://practicum.yandex.ru" className="footer__link" target="_blank" rel="noreferrer">Яндекс.Практикум</a>
+                        </li>
+                        <li className="footer__item">
+                            <a href="https://github.com" className="footer__link" target="_blank" rel="noreferrer">Github</a>
+                        </li>
+                        <li className="footer__item">
+                            <a href="https://vk.com" className="footer__link" target="_blank" rel="noreferrer">Facebook</a>
+                        </li>
                     </ul>
                 </section>
             </footer>

@@ -7,7 +7,7 @@ import Foto from '../../images/foto.png'
 function AboutMe() {
     return (
     <div className="wrapper">
-    <article className="student"> 
+    <article className="student" id="student"> 
          <section className="student__subheader subtitle">
             <h2 className="student__subh2 subtitle__h2">Студент</h2>
         </section>

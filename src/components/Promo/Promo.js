@@ -5,11 +5,11 @@ import './Promo.css';
 function Promo() {
     return (
         <div className="wrapper">
-            <header className="header">
-                <h1 className="header__title">
+            <article className="promo">
+                <h1 className="promo__title">
                     Учебный проект студента факультета Веб-разработки.
                 </h1>
-            </header>
+            </article>
         </div>
     )
 }
