@@ -73,9 +73,7 @@ function Navigation() {
             return (
                 navReturn()
             )
-
-
-
+            
         default:
             break;
     };

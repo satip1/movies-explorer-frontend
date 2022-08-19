@@ -74,6 +74,18 @@
   background-image: url('../../images/flag-gray.svg');
 }
 
+.carditem__cross {
+  margin: 0;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 15px;
+  background-color: #F9F9F9;
+  background-image: url('../../images/cross.png');  
+}
+
 .carditem__foto {
   grid-area: foto;
 }
@@ -87,14 +99,14 @@
 }
 
 
-@media screen and (max-width: 1120px)  {
+@media screen and (max-width: 1120px) {
   .carditem {
     max-width: 339px;
   }
 
   .cartitem__img {
     max-width: 339px;
-    max-height: 190px;  
+    max-height: 190px;
   }
 
 }
