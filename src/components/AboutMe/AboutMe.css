@@ -83,7 +83,7 @@
     width: 100%;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1120px)  {
     .student {
         margin-left: 50px;
         margin-right: 50px;
@@ -120,11 +120,12 @@
     }
 
     .student__foto {
-        max-width: 253px;
+        max-width: 253px;  
+        margin: auto;
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 549px) {
     .student {
         margin-left: 14px;
         margin-right: 14px;
@@ -138,7 +139,9 @@
             "text"
             "list";
         grid-template-rows: 1fr;
+        grid-template-columns: 1fr;
         grid-row-gap: 0;
+        grid-column-gap: 0;
     }
 
     .student__name {
@@ -171,5 +174,6 @@
 
     .student__foto {
         min-width: 292px;
+        margin: auto;
     }
 }

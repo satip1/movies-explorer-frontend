@@ -131,7 +131,7 @@
 
 
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 549px) {
   .login {
     max-width: 260px;
   }

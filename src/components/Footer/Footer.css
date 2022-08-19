@@ -69,7 +69,7 @@
     color: #000000;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1120px)  {
     .footer {
         padding-left: 30px;
         padding-right: 23px;
@@ -80,7 +80,7 @@
     }  
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 549px) {
     .footer {
         padding-left: 10px;
         padding-right: 10px;

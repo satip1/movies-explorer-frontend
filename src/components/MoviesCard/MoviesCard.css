@@ -87,7 +87,7 @@
 }
 
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1120px)  {
   .carditem {
     max-width: 339px;
   }
@@ -99,7 +99,7 @@
 
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 549px) {
   .carditem {
     max-width: 300px;
   }

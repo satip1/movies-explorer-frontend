@@ -7,7 +7,7 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 
 function Movies() {
     return (
-    <main className="page">
+    <main>
         <SearchForm />
         {/* <Preloader/> */}
         <MoviesCardList/>

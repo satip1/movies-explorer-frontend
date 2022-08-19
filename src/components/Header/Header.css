@@ -42,7 +42,7 @@
     left: 9px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1120px)  {
     .header {
         padding-left: 30px;
         padding-right: 30px;
@@ -55,11 +55,11 @@
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 549px) {
     .header {
         padding-left: 14px;
         padding-right: 14px;
-        padding-top: 18px;
+        padding-top: 15px;
         padding-bottom: 33px;
     }
 
