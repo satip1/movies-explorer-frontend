@@ -24,7 +24,6 @@
   border-bottom: 1px solid #000000;
 }
 
-
 .subtitle__h2 {
   margin: 0;
   padding: 0;
@@ -36,7 +35,6 @@
   letter-spacing: -0.04em;
   color: #000000
 }
-
 
 @media screen and (max-width: 1120px)  {
   .wrapper {
