@@ -23,8 +23,6 @@ function Header() {
             break;
     }
 
-
-
     return (
         <div className="page">
             <div className="wrapper">

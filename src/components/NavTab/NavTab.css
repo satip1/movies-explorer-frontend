@@ -52,6 +52,10 @@
         margin-left: 20px;
         margin-right: 20px;
     }
+
+    .navtab__list {
+        padding-top: 9px;
+    }
 }
 
 @media screen and (max-width: 320px) {

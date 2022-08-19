@@ -72,8 +72,12 @@
 @media screen and (max-width: 768px) {
     .footer {
         padding-left: 30px;
-        padding-right: 30px;
+        padding-right: 23px;
     }
+
+    .footer__subheader {
+        padding-top: 78px;
+    }  
 }
 
 @media screen and (max-width: 320px) {

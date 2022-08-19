@@ -1,5 +1,7 @@
 import React from "react";
-import './Portfolio.css'
+import './Portfolio.css';
+
+import { SITESTATIC, SITEADAPTIV, SITEONEPAGE } from '../../utils/constants'
 
 function Portfolio() {
 
@@ -10,16 +12,13 @@ function Portfolio() {
                     <h3 className="portfolio__title">Портфолио</h3>
                     <ul className="portfolio__site">
                         <li className="portfolio__sitetype">
-                            <p className="portfolio__description">Статичный сайт</p>
-                            <p className="portfolio__arrow">&#8599;</p>
+                            <a href={SITESTATIC} target="_blank" rel="noreferrer" className="portfolio__description">Статичный сайт</a>
                         </li>
                         <li className="portfolio__sitetype">
-                            <p className="portfolio__description">Адаптивный сайт</p>
-                            <p className="portfolio__arrow">&#8599;</p>
+                            <a href={SITEADAPTIV} target="_blank" rel="noreferrer" className="portfolio__description">Адаптивный сайт</a>
                         </li>
                         <li className="portfolio__sitetype">
-                            <p className="portfolio__description">Одностраничное приложение</p>
-                            <p className="portfolio__arrow">&#8599;</p>
+                            <a href={SITEONEPAGE} target="_blank" rel="noreferrer" className="portfolio__description">Одностраничное приложение</a>
                         </li>
                     </ul>
                 </section>

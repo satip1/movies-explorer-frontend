@@ -9,6 +9,7 @@
   max-width: 1280px;
   background-color: #ffffff;
 }
+
 .wrapper_gray {
   background-color: #F5F5F5;
 }
@@ -40,8 +41,13 @@
   .wrapper {
     max-width: 768px;
   }
+
   .subtitle {
     padding-top: 90px;
+  }
+
+  .wrapper_grayfooter {
+    background-color: #ffffff;
   }
 }
 
@@ -49,25 +55,23 @@
   .wrapper {
     max-width: 320px;
   }
+
   .wrapper_grayfooter {
     background-color: #ffffff;
   }
+
+  .wrapper_gray {
+    background-color: #ffffff;
+  }
+
   .subtitle {
     padding-top: 68px;
     padding-bottom: 25px;
   }
+
   .subtitle__h2 {
     font-size: 18px;
     line-height: 27px;
 
   }
 }
-
-
-
-
-
-
-
-
-
