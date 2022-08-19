@@ -77,7 +77,7 @@
 
 
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1120px)  {
     .texnologi {
         margin-left: 50px;
         margin-right: 50px;
@@ -112,11 +112,15 @@
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 549px) {
     .texnologi {
         margin-left: 18px;
         margin-right: 18px;
         padding-bottom: 70px;
+    }
+
+    .texnologi__subheader {
+        padding-top: 85px;
     }
 
     .texnologi__title {

@@ -18,6 +18,10 @@ function MoviesCardList() {
           <MoviesCard />
           <MoviesCard />
           <MoviesCard />
+          <MoviesCard />
+          <MoviesCard />
+          <MoviesCard />
+          <MoviesCard />
         </section>
 
         <section className="cardlist__again">

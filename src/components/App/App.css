@@ -37,9 +37,10 @@
 }
 
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1120px)  {
   .wrapper {
-    max-width: 768px;
+    max-width: 1020px;
+    /* min-width: 768px; */
   }
 
   .subtitle {
@@ -51,9 +52,10 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 549px) {
   .wrapper {
-    max-width: 320px;
+    max-width: 500px;
+    /* min-width: 320px; */
   }
 
   .wrapper_grayfooter {

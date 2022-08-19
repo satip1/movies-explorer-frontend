@@ -167,7 +167,7 @@
 
 
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1120px)  {
   .profile__name {
     padding-top: 216px;
     letter-spacing: .8px;
@@ -182,7 +182,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 549px) {
   .profile {
     width: 260px;
     margin: auto;

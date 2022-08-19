@@ -161,7 +161,7 @@
     border-radius: 20px;
   }
   
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1120px)  {
     .search {
       max-width: 708px;
       padding-top: 60px;
@@ -188,9 +188,11 @@
     }
   }
   
-  @media screen and (max-width: 320px) {
+  @media screen and (max-width: 549px) {
     .search {
       max-width: 292px;
+      /* min-width: 292px; */
+      padding-top: 64px;
     }
   
     .search__shortmovie {
@@ -202,10 +204,18 @@
       font-size: 11px;
       line-height: 17px;
     }
+
   
     .search__input::placeholder {
       font-size: 11px;
       line-height: 17px;
+    }
+
+    .search__btn {
+      padding: 6px 35px;
+    }
+    .search__img { 
+      width: 184%;
     }
   
     .search__span {

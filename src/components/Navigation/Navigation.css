@@ -126,7 +126,7 @@
 }
 
 .burger__menu_vision {
-    left: -1000px;
+    left: -10000px;
 }
 
 .burger__page {
@@ -202,7 +202,7 @@
 
 
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1120px)  {
     .nav1280 {
         display: none;
     }
@@ -213,7 +213,7 @@
    
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 549px) {
     .navigate__linkland {
         font-size: 10px;
         padding-left: 12px;

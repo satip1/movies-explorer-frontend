@@ -1,6 +1,6 @@
 import React from "react";
 import './SearchForm.css'
-import icon from '../../images/icon.svg'
+import icon from '../../images/icon.png'
 
 function SearchForm() {
     return (

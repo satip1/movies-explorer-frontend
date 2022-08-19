@@ -41,7 +41,7 @@
   text-align: center;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1120px)  {
 
   .cardlist {
     padding-left: 30px;
@@ -62,16 +62,16 @@
 }
 
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 549px) {
 
   .cardlist {
     padding-left: 10px;
     padding-right: 10px;
-   
+
   }
 
   .cardlist__tabl {
-    padding-top: 50px;
+    padding-top: 48px;
     grid-template-columns: repeat(1, minmax(0, 1fr));
     justify-items: center;
     grid-column-gap: 30px;
