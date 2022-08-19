@@ -7,10 +7,10 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 function SavedMovies() {
     return (
         
-    <div className="page">      
+    <main className="page">      
         <SearchForm />
         <MoviesCardList/>
-    </div>    
+    </main>    
     )
 }
 

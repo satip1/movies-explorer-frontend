@@ -3,8 +3,8 @@ import './Footer.css';
 
 function Footer() {
     return (
-        <div className="wrapper wrapper_grayfooter">
-            <footer className="footer">
+        <footer className="wrapper wrapper_grayfooter">
+            <article className="footer">
                 <section className="footer__subheader">
                     <h3 className="footer__subh3">Учебный проект Яндекс.Практикум х BeatFilm.</h3>
                 </section>
@@ -22,8 +22,8 @@ function Footer() {
                         </li>
                     </ul>
                 </section>
-            </footer>
-        </div>
+            </article>
+        </footer>
     );
 }
 

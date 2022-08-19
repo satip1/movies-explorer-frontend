@@ -1,12 +1,10 @@
 import React from 'react';
 import './AboutProject.css';
 
-
-
 function AboutProject() {
     return (
-        <div className="wrapper">
-            <article className="project" id="project">
+        <article className="wrapper">
+            <section className="project" id="project">
                 <section className="subtitle project__header ">
                     <h2 className="subtitle__h2 project__h2 ">О проекте</h2>
                 </section>
@@ -28,14 +26,9 @@ function AboutProject() {
                     <p className="project__itemweek">Back-end</p>
                     <p className="project__itemweek">Front-end</p>
                 </section>
-            </article>
-        </div>
+            </section>
+        </article>
     )
 };
 
 export default AboutProject;
-
-
-
-
-

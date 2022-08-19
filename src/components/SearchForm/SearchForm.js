@@ -4,7 +4,7 @@ import icon from '../../images/icon.svg'
 
 function SearchForm() {
     return (
-        <div className="page">
+        <article className="page">
             <section className="search">
                 <form className="search__form">
                     <section className="search__field">
@@ -23,7 +23,7 @@ function SearchForm() {
                     </section>
                 </form>
             </section>
-        </div>
+        </article>
     )
 }
 

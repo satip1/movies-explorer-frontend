@@ -9,7 +9,7 @@
 .profile__name {
   margin: 0;
   padding: 0;
-  font-family: 'Inter';
+  font-family: 'Inter', Arial, sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 24px;
@@ -39,7 +39,7 @@
 }
 
 .profile__span {
-  font-family: 'Inter';
+  font-family: 'Inter', Arial, sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 11px;
@@ -52,7 +52,7 @@
   padding: 0;
   outline: none;
   border: none;
-  font-family: 'Inter';
+  font-family: 'Inter', Arial, sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 11px;
@@ -61,10 +61,22 @@
   color: #000000;
   width: 75%;
   cursor: pointer;
+  transition: .3s ease;
 }
 
 .profile__input:hover {
+  background-color: darkgray;
+  border-radius: 3px;
+}
+
+.profile__input:focus {
   background-color: #f9f9f9;
+  outline: 1px solid #E8E8E8;
+}
+
+.profile__input::placeholder {
+  font-style: italic;
+  font-size: 10px;
 }
 
 .profile__button {
@@ -86,36 +98,48 @@
 }
 
 .profile__edit {
-  font-family: 'Inter';
+  font-family: 'Inter', Arial, sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 13px;
   line-height: 16px;
   text-align: center;
   color: #000000;
+  transition: .3s ease;
+}
+
+.profile__edit:hover {
+  font-weight: 500;
+  border-bottom: 1px solid #000000;
 }
 
 .profile__exit {
-  font-family: 'Inter';
+  font-family: 'Inter', Arial, sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 13px;
   line-height: 16px;
   text-align: center;
   color: #EE3465;
+  transition: .3s ease;
 }
+
+.profile__exit:hover {
+  border-bottom: 1px solid #EE3465;
+}
+
 
 .profile__error {
   margin: 0 auto;
   padding: 0;
-  font-family: 'Inter';
+  font-family: 'Inter', Arial, sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 11px;
   line-height: 13px;
   text-align: center;
   color: #FF004C;
-  padding-bottom: 23px; 
+  padding-bottom: 23px;
 }
 
 .profile__btnsave {
@@ -126,7 +150,7 @@
   padding-top: 13px;
   padding-bottom: 15px;
   background-color: #FF6838;
-  font-family: 'Inter';
+  font-family: 'Inter', Arial, sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;

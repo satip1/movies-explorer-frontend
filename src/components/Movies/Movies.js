@@ -7,21 +7,12 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 
 function Movies() {
     return (
-    <div className="page">
+    <main className="page">
         <SearchForm />
         {/* <Preloader/> */}
         <MoviesCardList/>
-    </div>    
+    </main>    
     )
 }
 
 export default Movies;
-
-
-
-
-
-
-
-
-

@@ -3,8 +3,8 @@ import './Techs.css';
 
 function Techs() {
     return (
-        <div className="wrapper wrapper_gray">
-            <article className="texnologi" id="texnologi">
+        <article className="wrapper wrapper_gray">
+            <section className="texnologi" id="texnologi">
 
                 <section className="subtitle texnologi__subheader ">
                     <h2 className="subtitle__h2 texnologi__subh2 ">Технологии</h2>
@@ -29,10 +29,9 @@ function Techs() {
                     </ul>
                 </section>
 
-            </article>
-        </div>
+            </section>
+        </article>
     )
 };
 
 export default Techs;
-

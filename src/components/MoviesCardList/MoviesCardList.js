@@ -6,8 +6,8 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 function MoviesCardList() {
 
   return (
-    <div className="wrapper">
-      <article className="cardlist">
+    <article className="wrapper">
+      <section className="cardlist">
 
         <section className="cardlist__tabl">
           <MoviesCard />
@@ -18,35 +18,15 @@ function MoviesCardList() {
           <MoviesCard />
           <MoviesCard />
           <MoviesCard />
-          {/* <MoviesCard />
-          <MoviesCard />
-          <MoviesCard />
-          <MoviesCard />           */}
-
         </section>
 
         <section className="cardlist__again">
-          <button className="cardlist__btnagain">Еще</button>
+          <button type="button" className="cardlist__btnagain">Еще</button>
         </section>
 
-      </article>
-    </div>
+      </section>
+    </article>
   )
 }
 
 export default MoviesCardList;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

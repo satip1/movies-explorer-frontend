@@ -6,8 +6,8 @@ import { SITESTATIC, SITEADAPTIV, SITEONEPAGE } from '../../utils/constants'
 function Portfolio() {
 
     return (
-        <div className="wrapper">
-            <article className="portfolio">
+        <article className="wrapper">
+            <section className="portfolio">
                 <section className="portfolio__listing">
                     <h3 className="portfolio__title">Портфолио</h3>
                     <ul className="portfolio__site">
@@ -22,22 +22,9 @@ function Portfolio() {
                         </li>
                     </ul>
                 </section>
-            </article>
-        </div>
+            </section>
+        </article>
     )
 }
 
 export default Portfolio;
-
-
-
-
-
-
-
-
-
-
-
-
-

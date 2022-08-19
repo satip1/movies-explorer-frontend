@@ -2,9 +2,6 @@ import React from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import './Navigation.css';
 
-
-
-
 function Navigation() {
 
     // состояние отображения бургер-меню
@@ -23,19 +20,19 @@ function Navigation() {
     const navReturn = () => {
         return (
             <>
-                <section className="navigate nav1280">
+                <nav className="navigate nav1280">
                     <div className="navigate__films">
                         <NavLink to='/movies' className="navigate__link" activeClassName="navigate__link_active">Фильмы</NavLink>
                         <NavLink to='/saved-movies' className="navigate__link" activeClassName="navigate__link_active">Сохраненные фильмы</NavLink>
                     </div>
                     <Link to='/profile' className="navigate__account">Аккаунт</Link>
-                </section>
+                </nav>
 
-                <section className="burger burger_vision">
+                <nav className="burger burger_vision">
 
                     <button className="burger__btn" onClick={onBurgerOpen} />
 
-                    <div className={isBurgerVision}>
+                    <section className={isBurgerVision}>
                         <div className="burger__page">
                             <button className="burger__btnclose" onClick={onBurgerClose}>
                                 <div className="btncross"></div>
@@ -47,8 +44,8 @@ function Navigation() {
                             </div>
                             <Link to='/profile' className="navigate__account">Аккаунт</Link>
                         </div>
-                    </div>
-                </section>
+                    </section>
+                </nav>
             </>
         );
     }

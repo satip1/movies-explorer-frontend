@@ -15,37 +15,21 @@ function Header() {
         case '/sign-up':
             styleHeader = "header_sign";
             break;
-        // case '/profile':
-        //     styleHeader = "header_profile";
-        //     break;
         default:
             styleHeader = "header";
             break;
     }
 
     return (
-        <div className="page">
-            <div className="wrapper">
-                <header className={styleHeader}>
+        <header className="page">
+            <article className="wrapper">
+                <section className={styleHeader}>
                     <Link to="/" className="header__logolink" />
                     <Navigation />
-                </header>
-            </div>
-        </div >
+                </section>
+            </article>
+        </header >
     )
 };
 
 export default Header;
-
-
-
-
-
-
-
-
-
-
-
-
-
