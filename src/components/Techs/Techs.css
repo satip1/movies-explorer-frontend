@@ -1,0 +1,159 @@
+.texnologi {
+    box-sizing: border-box;
+    margin-left: 70px;
+    margin-right: 70px;
+    padding-bottom: 100px;
+}
+
+.texnologi__subheader {
+    padding-top: 100px;
+}
+
+.texnologi__title {
+    padding-top: 90px;
+}
+
+.texnologi__h2 {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 58px;
+    text-align: center;
+    letter-spacing: -0.04em;
+    color: #000000;
+}
+
+.texnologi__text {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    letter-spacing: -0.04em;
+    color: #000000;
+    padding-top: 26px;
+    width: 36%;
+    margin: auto;
+}
+
+.texnologi__name {
+    padding-top: 100px;
+    padding-left: 224px;
+    padding-right: 224px;
+}
+
+.texnologi__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-column-gap: 10px;
+    justify-content: center;
+    align-content: center;
+}
+
+.texnologi__item {
+    background: #E8E8E8;
+    border-radius: 10px;
+    font-family: 'Inter', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    letter-spacing: -0.04em;
+    color: #000000;
+    padding-top: 21px;
+    padding-bottom: 22px;
+}
+
+
+
+@media screen and (max-width: 1120px)  {
+    .texnologi {
+        margin-left: 50px;
+        margin-right: 50px;
+        padding-bottom: 90px;
+        padding-top: 2px;
+    }
+
+    .texnologi__subheader {
+        padding-top: 87px;
+    }
+
+    .texnologi__title {
+        padding-top: 80px;
+    }
+
+    .texnologi__text {
+        font-size: 12px;
+        line-height: 18px;
+        padding-top: 22px;
+        width: 68%;
+    }
+
+    .texnologi__name {
+        padding-top: 83px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .texnologi__item {
+        font-size: 12px;
+        line-height: 15px;
+    }
+}
+
+@media screen and (max-width: 549px) {
+    .texnologi {
+        margin-left: 18px;
+        margin-right: 18px;
+        padding-bottom: 70px;
+    }
+
+    .texnologi__subheader {
+        padding-top: 85px;
+    }
+
+    .texnologi__title {
+        padding-top: 60px;
+    }
+
+    .texnologi__h2 {
+        font-size: 30px;
+        line-height: 36px;
+    }
+
+    .texnologi__text {
+        font-size: 11px;
+        line-height: 16px;
+        padding-top: 24px;
+        width: 90%;
+    }
+
+    .texnologi__name {
+        padding-top: 50px;
+        padding-left: 53px;
+        padding-right: 53px;
+    }
+
+    .texnologi__list {
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 10px;
+        grid-row-gap: 10px;
+    }
+
+    .texnologi__item {
+        font-size: 12px;
+        line-height: 15px;
+        padding-bottom: 21px;
+    }
+}

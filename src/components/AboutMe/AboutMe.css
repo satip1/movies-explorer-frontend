@@ -1,0 +1,179 @@
+.student {
+    box-sizing: border-box;
+    margin-left: 70px;
+    margin-right: 70px;
+    /* padding-bottom: 111px; */
+}
+
+.student__data {
+    padding-top: 66px;
+    display: grid;
+    grid-template-areas: "name foto"
+        "prof foto"
+        "text foto"
+        "list foto";
+    grid-template-rows: 1fr .45fr 2fr 1fr;   
+    grid-column-gap: 270px;
+    grid-row-gap: 18px;
+}
+
+
+.student__name {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 58px;
+    letter-spacing: -0.04em;
+    color: #000000;
+    grid-area: name;
+}
+
+.student__prof {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 16px;
+    color: #000000;
+    grid-area: prof;
+}
+
+.student__text {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color: #000000;
+    grid-area: text;
+}
+
+.student__list {
+    margin: 0;
+    padding: 0;
+    grid-area: list;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+
+}
+
+.student__item {
+    list-style: none;
+    font-family: 'Inter', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+    margin-right: 20px;
+}
+
+.student__foto {
+    grid-area: foto;
+    border-radius: 10px;
+    max-width: 270px;
+    width: 100%;
+}
+
+@media screen and (max-width: 1120px)  {
+    .student {
+        margin-left: 50px;
+        margin-right: 50px;
+        padding-bottom: 4px;
+    }
+
+    .student__data {
+        grid-template-rows: .6fr .45fr 2fr 1fr;
+        grid-template-columns: 1.3fr .9fr;
+        grid-column-gap: 49px;
+        grid-row-gap: 0;
+    }
+
+    .student__name {
+        font-size: 40px;
+        line-height: 40px;
+    }
+
+    .student__prof {
+        font-size: 12px;
+        line-height: 18px;
+        padding-top: 10px;
+    }
+
+    .student__text {
+        font-size: 12px;
+        line-height: 18px;
+        padding-top: 14px;
+    }
+
+    .student__item {
+        font-size: 14px;
+        line-height: 17px;
+    }
+
+    .student__foto {
+        max-width: 253px;  
+        margin: auto;
+    }
+}
+
+@media screen and (max-width: 549px) {
+    .student {
+        margin-left: 14px;
+        margin-right: 14px;
+    }
+
+    .student__data {
+        padding-top: 60px;
+        grid-template-areas: "foto"
+            "name"
+            "prof"
+            "text"
+            "list";
+        grid-template-rows: 1fr;
+        grid-template-columns: 1fr;
+        grid-row-gap: 0;
+        grid-column-gap: 0;
+    }
+
+    .student__name {
+        padding-top: 39px;
+        font-size: 30px;
+        line-height: 36px;
+    }
+
+    .student__prof {
+        font-size: 11px;
+        line-height: 16px;
+        padding-top: 20px;
+    }
+
+    .student__text {
+        font-size: 11px;
+        line-height: 16px;
+        padding-top: 20px;
+    }
+
+    .student__list {
+        padding-top: 39px;
+    }
+
+    .student__item {
+        font-size: 14px;
+        line-height: 17px;
+        margin-right: 28px;
+    }
+
+    .student__foto {
+        min-width: 292px;
+        margin: auto;
+    }
+}
