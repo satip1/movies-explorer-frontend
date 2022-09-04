@@ -26,17 +26,31 @@
   flex-direction: column;
 }
 
+.profile__fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  position: relative;
+}
+
+.profile__fieldset:first-child {
+  padding-bottom: 16px;
+  border-bottom: 1px solid #E8E8E8;
+  margin-bottom: 17px;
+}
+
 .profile__item {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-.profile__item:first-child {
+/* .profile__item:first-child {
   padding-bottom: 16px;
   border-bottom: 1px solid #E8E8E8;
   margin-bottom: 17px;
-}
+} */
 
 .profile__span {
   font-family: 'Inter', Arial, sans-serif;
@@ -62,6 +76,7 @@
   width: 75%;
   cursor: pointer;
   transition: .3s ease;
+
 }
 
 .profile__input:hover {
@@ -77,6 +92,12 @@
 .profile__input::placeholder {
   font-style: italic;
   font-size: 10px;
+}
+
+.profile__input_disabled:hover {
+  background-color: transparent;
+  border-radius: 0;
+  cursor: default;
 }
 
 .profile__button {
@@ -95,6 +116,10 @@
 
 .profile__btn:last-child {
   margin-bottom: 0;
+}
+
+.profile__btn_visible {
+  display: none;
 }
 
 .profile__edit {
@@ -128,7 +153,6 @@
   border-bottom: 1px solid #EE3465;
 }
 
-
 .profile__error {
   margin: 0 auto;
   padding: 0;
@@ -139,7 +163,8 @@
   line-height: 13px;
   text-align: center;
   color: #FF004C;
-  padding-bottom: 23px;
+  position: absolute;
+  left: 0;
 }
 
 .profile__btnsave {
@@ -159,15 +184,38 @@
   color: #FFFFFF;
   transition: .3s ease;
   cursor: pointer;
+  position: relative;
 }
 
 .profile__btnsave:hover {
   opacity: .8;
 }
 
+.profile__btn_disabled {
+  color: #000000;
+  background: #E8E8E8;
+}
 
+.profile__btn_disabled:hover {
+  opacity: 1;
+}
 
-@media screen and (max-width: 1120px)  {
+.profile__error-submit {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 13px;
+  text-align: center;
+  color: #FF004C;
+  position: absolute;
+  top: -22px;
+  left: 0;
+}
+
+@media screen and (max-width: 1120px) {
   .profile__name {
     padding-top: 216px;
     letter-spacing: .8px;

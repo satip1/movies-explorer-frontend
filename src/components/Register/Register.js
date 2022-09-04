@@ -1,30 +1,79 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import './Register.css'
+import './Register.css';
 
-function Register() {
+import FormValidation from "../FormValidation/FormValidation";
+
+const Register = (props) => {
+
+    // валидация полей ввода
+    const { values, handleChange, errors, isValid, setValues } = FormValidation();
+
+
+    // обработчик сабмита формы 
+    const handleSubmit = (evt) => {
+        evt.preventDefault();
+        props.onRegUser(values.name, values.email, values.password);
+        // evt.target.reset();
+    }
+
+    const handleInputChange = (evt) => {
+        // console.log(values);
+        handleChange(evt);
+        if (props.errormsg.length > 0) { props.setErrorMsg("") }
+    }
+
     return (
         <main className="page">
             <article className="register">
                 <h1 className="register__h1">Добро пожаловать</h1>
 
-                <form className="register__form">
+                <form className="register__form" onSubmit={handleSubmit}>
                     <div className="register__item">
                         <label className="register__label">Имя</label>
-                        <input type="text" className="register__input" required placeholder="Ваше имя в системе"/>
-                        {/* <span className="register__error">Что-то пошло не так</span> */}
+                        <input
+                            name="name"
+                            type="text"
+                            className="register__input"
+                            onChange={handleInputChange}
+                            value={values.name || ''}
+                            required
+                            minLength="2"
+                            maxLength="30"
+                            pattern="[а-яА-Яaa-zA-ZёЁ\- ]{1,}"
+                            placeholder="Ваше имя в системе" />
+                        <p className="register__error">{errors.name}</p>
                     </div>
                     <div className="register__item">
                         <label className="register__label">E-mail</label>
-                        <input type="email" className="register__input" required placeholder="Введите email"/>
-                        <span className="register__error">Что-то пошло не так</span>
+                        <input
+                            name="email"
+                            type="email"
+                            className="register__input"
+                            onChange={handleInputChange}
+                            required
+                            placeholder="Введите email" />
+                        <p className="register__error">{errors.email}</p>
                     </div>
                     <div className="register__item">
                         <label className="register__label">Пароль</label>
-                        <input type="password" className="register__input" required placeholder="Введите пароль"/>
-                        <span className="register__error">Что-то пошло не так</span>
+                        <input
+                            name="password"
+                            type="password"
+                            className="register__input"
+                            onChange={handleInputChange}
+                            required
+                            minLength="8"
+                            placeholder="Введите пароль" />
+                        <p className="register__error">{errors.password}</p>
                     </div>
-                    <button type="submit" className="register__formbtn">Зарегистрироваться</button>
+                    <button
+                        type="submit"
+                        disabled={!isValid}
+                        className={`register__formbtn ${isValid ? '' : 'register__formbtn_disabled'}`}>
+                        <p className="register__error-submit">{props.errormsg}</p>
+                        Зарегистрироваться
+                    </button>
                 </form>
 
                 <section className="register__reg">

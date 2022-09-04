@@ -2,6 +2,7 @@
   max-width: 364px;
   background-color: #FDFDFD;
   box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08);
+  width: 100%;
 }
 
 .carditem__header {
@@ -9,9 +10,9 @@
   display: grid;
   grid-template-areas:
     "name flag"
-    "time flag"
-    "foto foto";
-  grid-template-columns: 2fr 1fr;
+    "time flag";
+    /* "foto foto"; */
+  grid-template-columns: 2fr min-content;
 }
 
 .carditem__name {
@@ -24,7 +25,9 @@
   line-height: 18px;
   color: #000000;
   grid-area: name;
-
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .carditem__time {
@@ -34,10 +37,11 @@
   font-weight: 400;
   font-size: 11px;
   line-height: 13px;
-  display: flex;
-  align-items: center;
+  /* display: flex;
+  align-items: center; */
   color: #A0A0A0;
   grid-area: time;
+  padding-right: 5px;
 }
 
 .carditem__btn {
@@ -50,7 +54,8 @@
   display: flex;
   justify-content: right;
   align-items: center;
-  grid-area: flag;
+  grid-area: flag;  
+  padding-left: 5px;
 }
 
 
@@ -87,7 +92,7 @@
 }
 
 .carditem__foto {
-  grid-area: foto;
+  /* grid-area: foto; */
 }
 
 
@@ -96,6 +101,7 @@
   max-width: 364px;
   max-height: 203px;
   width: 100%;
+  object-fit: cover;
 }
 
 

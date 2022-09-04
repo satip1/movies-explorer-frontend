@@ -1,23 +1,74 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import './Login.css'
+import './Login.css';
 
-function Login() {
+import FormValidation from "../FormValidation/FormValidation";
+
+function Login(props) {
+
+
+    // валидация полей ввода
+    const { values, handleChange, errors, isValid, setValues } = FormValidation();
+
+    // обработчик сабмита формы 
+    const handleSubmit = (evt) => {
+        evt.preventDefault();
+        props.onAuthUser(values.email, values.password);
+        // evt.target.reset();
+    }
+
+    const handleInputChange = (evt) => {
+        handleChange(evt);
+        if (props.errormsg.length > 0) {props.setErrorMsg("")}
+    }
+
+
     return (
         <main className="page">
             <article className="login">
                 <h1 className="login__h1">Рады видеть!</h1>
 
-                <form className="login__form">
-                    <div className="login__item">
-                        <label className="login__label">E-mail</label>
-                        <input type="email" className="login__input" required placeholder="Введите свой email"/>
-                    </div>
-                    <div className="login__item">
-                        <label className="login__label">Пароль</label>
-                        <input type="password" className="login__input" required placeholder="Введите пароль"/>
-                    </div>
-                    <button type="submit" className="login__formbtn">Войти</button>
+                <form className="login__form" onSubmit={handleSubmit}>
+
+                    <fieldset className="login__fieldset">
+                        <div className="login__item">
+                            <label className="login__label">E-mail</label>
+                            <input
+                                name="email"
+                                type="email"
+                                className="login__input"
+                                onChange={handleInputChange}
+                                value={values.email || ''}
+                                required
+                                placeholder="Введите свой email" />
+                        </div>
+                        <p className="login__error">{errors.email}</p>
+                    </fieldset>
+
+                    <fieldset className="login__fieldset">
+                        <div className="login__item">
+                            <label className="login__label">Пароль</label>
+                            <input
+                                name="password"
+                                type="password"
+                                className="login__input"
+                                onChange={handleInputChange}
+                                value={values.password || ''}
+                                required
+                                minLength="8"
+                                placeholder="Введите пароль" />
+                        </div>
+                        <p className="login__error">{errors.password}</p>
+                    </fieldset>
+
+
+                    <button
+                        type="submit"
+                        disabled={!isValid}
+                        className={`login__formbtn ${isValid ? '' : 'login__formbtn_disabled'}`}>
+                        <p className="login__error-submit">{props.errormsg}</p>
+                        Войти
+                    </button>
                 </form>
 
                 <section className="login__reg">
