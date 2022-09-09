@@ -64,15 +64,27 @@ const App = () => {
   // обновляем локальное хранилище сохраненных фильмов 
   React.useEffect(() => {
     localStorage.setItem('saved', JSON.stringify(moviessaved));
-    let a = JSON.parse(localStorage.getItem('clipsallfind'));
+    let all = JSON.parse(localStorage.getItem('clipsallfind'));
+    if (all=== null) return
     if (moviessaved.length > 0) {
-      if (a) {
-        let b = a.map((elem) => {
+     
+        let b = all.map((elem) => {
           let find = moviessaved.find((item) => item.movieId === elem.movieId)
-          if (!find) { elem._id = ''; elem.saved = false }
+          if (!find) { elem._id = '';
+           elem.saved = false }
           return elem
         })
-        localStorage.setItem('clipsallfind', JSON.stringify(b))
+        localStorage.setItem('clipsallfind', JSON.stringify(b))    
+    }
+
+    if (moviessaved.length == 0) {  
+      if (all.length > 0) {
+        let b = all.map((elem) => {
+          elem._id = ''; 
+          elem.saved = false;
+          return elem
+        })
+        localStorage.setItem('clipsallfind', JSON.stringify(b))   
       }
     }
   }, [moviessaved])
@@ -133,7 +145,7 @@ const App = () => {
   const handleAuthSubmit = (email, password) => {
     mainapi.getAuthUser(email, password)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         if (localStorage.getItem('jwt')) localStorage.removeItem('jwt')
         mainapi.getUserData(res.token)
           .then((data) => {
@@ -188,7 +200,6 @@ const App = () => {
     // console.log('addSavedMovies тип данных movie.movieId', typeof movie.movieId)
     const thumb = `${IMAGESERVER}${movie.image.formats.thumbnail.url}`;
     const image = `${IMAGESERVER}${movie.image.url}`;
-    console.log(image);
     const item = {
       country: movie.country,
       director: movie.director,
@@ -228,7 +239,7 @@ const App = () => {
     mainapi.deleteSaveMovie(token, movie._id)
       .then((res) => {
         // обновили общий список 
-        console.log('result delete res: ', res)
+        // console.log('result delete res: ', res)
         let time = movieslist.map((elem) => {
           if (elem.movieId === movie.movieId) {
             elem._id = '';
@@ -239,7 +250,7 @@ const App = () => {
         setMoviesList(time);
 
         // обновили список сохраненных фильмов
-        console.log('movie: ', movie)
+        // console.log('movie: ', movie)
         let saved = moviessaved.map((elem) => elem);
         let index = saved.findIndex((elem) => elem.movieId === movie.movieId)
         if (index < 0) {
@@ -302,8 +313,7 @@ const App = () => {
             <Movies
               mode='movies'
               movies={movieslist}
-              moviessaved={moviessaved}  
-      
+              moviessaved={moviessaved}
               onSaveMovies={handleSaveMovies}
             />
             <Footer />

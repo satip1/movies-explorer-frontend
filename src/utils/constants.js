@@ -5,8 +5,8 @@ export const MOVIESSERVER = 'https://api.nomoreparties.co/beatfilm-movies';
 export const IMAGESERVER =  'https://api.nomoreparties.co';
 
 // адрес сервера api сохраненных фильмов
-// export const MAINSERVER = 'https://api.satip2.nomoredomains.xyz';
-export const MAINSERVER = 'http://localhost:3001';
+export const MAINSERVER = 'https://api.satip2.nomoredomains.xyz';
+// export const MAINSERVER = 'http://localhost:3001';
 
 // адреса сайтов для лендинга профиля
 export const SITESTATIC = 'https://yandex.ru';

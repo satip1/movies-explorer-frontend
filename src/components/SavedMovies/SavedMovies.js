@@ -107,7 +107,7 @@ const SavedMovies = (props) => {
         let index = time.findIndex((elem) => elem.movieId === item.movieId)
         time.splice(index, 1);
         setTarget(time);
-        props.onsetTapSaved(true);
+        // props.onsetTapSaved(true);
     }
     return (
         <main>

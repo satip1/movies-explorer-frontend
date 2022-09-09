@@ -122,7 +122,7 @@ class MainApi {
 
   // удалить фильм из сохраненных 
   deleteSaveMovie = (jwt, id) => {
-    console.log('id карточки из mainapi:', id)
+    // console.log('id карточки из mainapi:', id)
     return fetch(`${this.server}/movies/${id}`, {
       method: 'DELETE',
       headers: {

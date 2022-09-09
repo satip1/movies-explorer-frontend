@@ -57,12 +57,11 @@ const Movies = (props) => {
                 ls_clipsallfind = '[]';
             }
         }
-
+    
         setClipsAllFind(JSON.parse(ls_clipsallfind));
         setClipChecked(JSON.parse(ls_clipchecked));
 
-        setSearchWord(ls_searchword);
-        console.log('кошмар');
+        setSearchWord(ls_searchword);   
 
         handleResizeScreen();
         window.addEventListener('resize', handleResizeScreen);
