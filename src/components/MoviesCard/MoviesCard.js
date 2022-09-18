@@ -7,6 +7,7 @@ function MoviesCard(props) {
 
   // название фильма
   const nameRU = props.card.nameRU;
+  const trailerLink = props.card.trailerLink;
 
   // расчет времени
   const duration = props.card.duration;
@@ -28,7 +29,7 @@ function MoviesCard(props) {
     props.onSaveMovies(props.card);
   }
 
-  const handleBtnDelSave = () => {
+  const handleBtnDelSave = () => {   
     props.onSaveMovies(props.card); 
   }
 
@@ -70,7 +71,9 @@ function MoviesCard(props) {
         {btnActive}
       </div>
       <div className="carditem__foto">
+        <a href={trailerLink} target="_blank" rel="noreferrer">
         <img src={srcfoto} alt="Фото" className="cartitem__img" />
+        </a>
       </div>
     </section>
   )

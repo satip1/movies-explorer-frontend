@@ -19,7 +19,7 @@ function MoviesCardList(props) {
               mode={props.mode}
               card={item}
               key={item.movieId}
-              onSaveMovies={props.onSaveMovies}
+              onSaveMovies={props.onSaveMovies}              
             />
           )}
         </section>

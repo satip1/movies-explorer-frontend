@@ -18,7 +18,7 @@ const Register = (props) => {
     }
 
     const handleInputChange = (evt) => {
-        // console.log(values);
+        console.log(props.errormsg);
         handleChange(evt);
         if (props.errormsg.length > 0) { props.setErrorMsg("") }
     }
@@ -51,6 +51,7 @@ const Register = (props) => {
                             type="email"
                             className="register__input"
                             onChange={handleInputChange}
+                            pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                             required
                             placeholder="Введите email" />
                         <p className="register__error">{errors.email}</p>
@@ -70,7 +71,8 @@ const Register = (props) => {
                     <button
                         type="submit"
                         disabled={!isValid}
-                        className={`register__formbtn ${isValid ? '' : 'register__formbtn_disabled'}`}>
+                        // className={`register__formbtn ${isValid ? '' : 'register__formbtn_disabled'}`}>
+                        className="register__formbtn">
                         <p className="register__error-submit">{props.errormsg}</p>
                         Зарегистрироваться
                     </button>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch, useHistory } from 'react-router-dom';
+import { Route, Router, Switch, useHistory, useLocation } from 'react-router-dom';
 import './App.css';
 
 import Header from '../Header/Header';
@@ -27,6 +27,7 @@ const App = () => {
 
   // перемещаемся по страницам
   const history = useHistory();
+  const location = useLocation();
 
   // глобальный контекст пользователя
   const [currentUser, setCurrentUser] = React.useState({
@@ -45,56 +46,81 @@ const App = () => {
   const [movieslist, setMoviesList] = React.useState([]);
   //полный список сохраненных фильмов
   const [moviessaved, setMoviesSaved] = React.useState([]);
-  // список найденных фильмов из локал сторедж
+
+
+  const updateMovies = () => {
+    let time = JSON.parse(localStorage.getItem('bd'));
+
+    if (time == null || time.length == 0) {
+      moviesapi.getMovies()
+        .then((movies) => {
+          localStorage.setItem('bd', JSON.stringify(movies)) 
+        })     
+        .catch((err) => { return setErrorMsg(err.message) })
+    }
+    else {
+      setMoviesList(time);
+    }
+  }
 
   // при первой отрисовке проверяем, есть ли jwt
-  React.useEffect(() => {
+  React.useEffect(() => {     
+    updateMovies();
+    console.log('при первом монтировании компонента запущен')
     const jwt = localStorage.getItem('jwt');
     if (!jwt) return
-    setLoggedIn(true);
-    setToken(jwt);
-
+    mainapi.getUserData(jwt)
+      .then((user) => {
+        setCurrentUser({
+          id: user.user._id,
+          name: user.user.name,
+          email: user.user.email
+        });
+        setToken(jwt);
+        setLoggedIn(true);
+      })
+      .catch((err) => {
+        console.log('Нет токена')
+        history.push('/');
+      })
   }, []);
 
-  // обновляем локальное хранилище всех фильмов 
+ // обновляем локальное хранилище всех фильмов 
   React.useEffect(() => {
     localStorage.setItem('movies', JSON.stringify(movieslist));
   }, [movieslist])
 
+
   // обновляем локальное хранилище сохраненных фильмов 
   React.useEffect(() => {
     localStorage.setItem('saved', JSON.stringify(moviessaved));
-    let all = JSON.parse(localStorage.getItem('clipsallfind'));
-    if (all=== null) return
-    if (moviessaved.length > 0) {
-     
-        let b = all.map((elem) => {
-          let find = moviessaved.find((item) => item.movieId === elem.movieId)
-          if (!find) { elem._id = '';
-           elem.saved = false }
-          return elem
-        })
-        localStorage.setItem('clipsallfind', JSON.stringify(b))    
-    }
-
-    if (moviessaved.length == 0) {  
-      if (all.length > 0) {
-        let b = all.map((elem) => {
-          elem._id = ''; 
-          elem.saved = false;
-          return elem
-        })
-        localStorage.setItem('clipsallfind', JSON.stringify(b))   
-      }
-    }
   }, [moviessaved])
 
+  const validURL = (str) => {
+    var regex = /(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
+    if (!regex.test(str)) {
+      return false;
+    } else {
+      return true;
+    }
+  }
 
+ 
   React.useEffect(() => {
     if (loggedIn) {
-      Promise.all([mainapi.getUserData(token), moviesapi.getMovies(), mainapi.getSavedMovies(token)])
-        .then(([user, movies, saved]) => {
+      Promise.all([mainapi.getUserData(token),  mainapi.getSavedMovies(token)])
+        .then(([user, saved]) => {
+          const movies = JSON.parse(localStorage.getItem('bd'))
           const newmovies = movies.map((item) => {
+            item.country = item.country || 'https://yandex.ru';
+            item.director = item.director || 'https://yandex.ru';
+            item.duration = item.duration || 0;
+            item.description = item.description || 'https://yandex.ru';
+            item.image = item.image || 'https://yandex.ru';
+            item.trailerLink = validURL(item.trailerLink) ? item.trailerLink : 'https://yandex.ru';
+            item.thumbnail = validURL(item.thumbnail) ? item.thumbnail : 'https://yandex.ru';
+            item.nameRU = item.nameRU || 'https://yandex.ru';
+            item.nameEN = item.nameEN || 'https://yandex.ru';
             item._id = '';
             item.movieId = item.id;
             item.saved = false;
@@ -122,11 +148,17 @@ const App = () => {
             email: user.user.email
           });
 
+          setLoggedIn(true);
+
         })
         .catch((err) => { return setErrorMsg(err.message) })
     }
-  }, [loggedIn, token])
+  }, [token])
 
+  
+  React.useEffect(() => {
+    console.log('app.js ', loggedIn)
+  }, [loggedIn])
 
   // обработчик формы регистрации нового пользователя
   const handleRegSubmit = (name, email, password) => {
@@ -134,7 +166,11 @@ const App = () => {
       .then((res) => {
         return new Promise(resolve => setTimeout(resolve, 1000))
       })
-      .then(() => { setErrorMsg('err.message'); handleAuthSubmit(email, password); })
+      .then(() => {
+        // setErrorMsg('err.message'); 
+        // setLoggedIn(true);
+        handleAuthSubmit(email, password);
+      })
       .catch((err) => {
         if (err.status === 400) return setErrorMsg('Ошибка заполнения полей')
         if (err.status === 409) return setErrorMsg('Используйте другой email')
@@ -145,7 +181,6 @@ const App = () => {
   const handleAuthSubmit = (email, password) => {
     mainapi.getAuthUser(email, password)
       .then((res) => {
-        // console.log(res);
         if (localStorage.getItem('jwt')) localStorage.removeItem('jwt')
         mainapi.getUserData(res.token)
           .then((data) => {
@@ -159,11 +194,12 @@ const App = () => {
             setLoggedIn(true);
             history.push('/movies');
           })
-          .catch((err) => { return console.log(err) })
+
       })
       .catch((err) => {
         if (err.status === 400) return setErrorMsg('Ошибка авторизации');
         if (err.status === 401) return setErrorMsg('Неправильный email или пароль')
+        return console.log(err)
       })
   }
 
@@ -185,15 +221,48 @@ const App = () => {
   // выйти из аккаунта
   const handleGoOut = () => {
     localStorage.clear();
-    setLoggedIn(false);
-    setCurrentUser({ id: ' ', name: ' ', email: ' ' });
     setMoviesList([]);
-    setErrorMsg('');
+    setMoviesSaved([]);
+    setLoggedIn(false);
     setToken('');
+    setCurrentUser({ id: ' ', name: ' ', email: ' ' });
+    setErrorMsg('');
     history.push('/');
   }
 
+  // const handleGoOut = () => {
+  //   // localStorage.clear();
+  //   localStorage.removeItem('clipchecked');
+  //   localStorage.removeItem('clipsallfind');
+  //   localStorage.removeItem('jwt');
+  //   localStorage.removeItem('saved');
+  //   localStorage.removeItem('searchword');
+  //   setLoggedIn(false);
+  //   setToken('');
+  //   setCurrentUser({ id: ' ', name: ' ', email: ' ' });
+  //   setErrorMsg('');
+  //   history.push('/');
+  // }
+
+
+
+
+
+
   // ************************************************** 
+
+
+  const update = () => {
+    let all = JSON.parse(localStorage.getItem('clipsallfind'));
+    if (all === null) return
+    let b = all.map((elem) => {
+      const f = movieslist.find((item) => item.movieId === elem.movieId);
+      elem._id = f._id;
+      elem.saved = f.saved;
+      return elem
+    })
+    localStorage.setItem('clipsallfind', JSON.stringify(b))
+  }
 
   // добавление фильма в сохраненные
   const addSavedMovies = (movie) => {
@@ -260,6 +329,7 @@ const App = () => {
         }
         saved.splice(index, 1);
         setMoviesSaved(saved);
+        update();
       })
       .catch((err) => console.log('Сохранение не отменилось: ', err));
   }
@@ -279,6 +349,7 @@ const App = () => {
       <CurrentUserContext.Provider value={currentUser}>
 
         <Switch>
+     
           <Route path='/sign-in'>
             <Header
             />
@@ -308,7 +379,7 @@ const App = () => {
             />
           </ProtectedRoute>
 
-          <ProtectedRoute exact path="/movies" loggedIn={loggedIn}>
+          <ProtectedRoute exact path="/movies" loggedIn={loggedIn}>                                               
             <Header />
             <Movies
               mode='movies'
@@ -340,6 +411,7 @@ const App = () => {
           <Route path='*'>
             <NotFound />
           </Route>
+  
         </Switch>
       </CurrentUserContext.Provider>
     </>

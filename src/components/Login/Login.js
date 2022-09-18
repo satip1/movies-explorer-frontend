@@ -19,7 +19,7 @@ function Login(props) {
 
     const handleInputChange = (evt) => {
         handleChange(evt);
-        if (props.errormsg.length > 0) {props.setErrorMsg("")}
+        if (props.errormsg.length > 0) { props.setErrorMsg("") }
     }
 
 
@@ -39,6 +39,7 @@ function Login(props) {
                                 className="login__input"
                                 onChange={handleInputChange}
                                 value={values.email || ''}
+                                pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                                 required
                                 placeholder="Введите свой email" />
                         </div>
@@ -65,7 +66,8 @@ function Login(props) {
                     <button
                         type="submit"
                         disabled={!isValid}
-                        className={`login__formbtn ${isValid ? '' : 'login__formbtn_disabled'}`}>
+                        // className={`login__formbtn ${isValid ? '' : 'login__formbtn_disabled'}`}>
+                        className="login__formbtn">
                         <p className="login__error-submit">{props.errormsg}</p>
                         Войти
                     </button>

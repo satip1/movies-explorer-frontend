@@ -12,6 +12,9 @@ function SearchForm(props) {
     const [checked, setChecked] = React.useState(false); // отметка выбора короткометражки
     const [resulttext, SetResultText] = React.useState(''); // сообщение результата поиска
 
+
+ 
+
     const changeCheckbox = () => {
         setChecked(!checked);
     }
@@ -22,13 +25,13 @@ function SearchForm(props) {
         props.searchMovies(inputtext, checked);
     }
 
-    const handleInputChange = (evt) => { 
+    const handleInputChange = (evt) => {
         setInputText(evt.target.value);
         if (errortext.length !== 0) { setErrorText('') }
     }
 
     React.useEffect(() => {
-          if (resulttext.length > 0) props.onMessage(' ');        
+        if (resulttext.length > 0) props.onMessage(' ');
     }, [inputtext])
 
     React.useEffect(() => {
@@ -42,6 +45,14 @@ function SearchForm(props) {
     React.useEffect(() => {
         setChecked(props.clipchecked);
     }, [props.clipchecked])
+    
+
+    React.useEffect(() => {
+        if (inputtext === '') { return }
+        props.searchMovies(inputtext, checked);        
+    }, [checked])
+
+
 
 
     return (

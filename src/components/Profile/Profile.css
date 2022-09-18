@@ -191,6 +191,12 @@
   opacity: .8;
 }
 
+.profile__btnsave:disabled {
+  color: #000000;
+  background: #E8E8E8;
+  cursor: not-allowed;
+}
+
 .profile__btn_disabled {
   color: #000000;
   background: #E8E8E8;

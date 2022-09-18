@@ -64,9 +64,8 @@ const Movies = (props) => {
         setSearchWord(ls_searchword);   
 
         handleResizeScreen();
-        window.addEventListener('resize', handleResizeScreen);
-        return window.removeEventListener('resize', handleResizeScreen);
 
+        window.addEventListener('resize', handleResizeScreen);      
     }, [])
 
     React.useEffect(() => {
@@ -122,6 +121,7 @@ const Movies = (props) => {
         setTimeout(() => setLoader(false), 300)
         setTarget([]);
         const entry = new RegExp(text, 'gi');
+        // console.log("checked ", checked);
         let result = [];
         if (checked)
             result = clipsall.filter(item => entry.test(item.nameRU) && item.duration <= DURATION_SHORT_CLIP)
@@ -169,7 +169,7 @@ const Movies = (props) => {
                 loader={loader}
                 btnstill={btnstill}
                 onSaveMovies={hendleSaveClip}
-                onStill={handleClickStill}
+                onStill={handleClickStill}                
             />
         </main>
     )

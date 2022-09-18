@@ -6,18 +6,27 @@ import FormValidation from "../FormValidation/FormValidation";
 
 function Profile(props) {
 
+  // console.log('Проерка при редактировании профиля ', props.errormsg);
+
   const currentUser = React.useContext(CurrentUserContext);
+  const { email, name } = currentUser;
   const { values, handleChange, errors, isValid, setValues } = FormValidation();
 
 
   const [visiblebtnsave, setVisibleBtnSave] = React.useState('profile__btn_visible');
   const [visiblebtnedit, setVisibleBtnEdit] = React.useState('');
+  const [savedisabled, setSaveDisabled] = React.useState(true)
 
 
   React.useEffect(() => {
     setValues(currentUser);
   }, [currentUser, setValues]);
 
+
+  React.useEffect(() => {
+    if (name === values.name && email === values.email) setSaveDisabled(true)
+    else setSaveDisabled(!isValid)
+  }, [values.name, values.email])
 
   // обработчик сабмита формы 
   const handleSubmit = (evt) => {
@@ -28,7 +37,8 @@ function Profile(props) {
       setVisibleBtnSave('profile__btn_visible');
       setVisibleBtnEdit('');
       props.setErrorMsg('');
-    }, 3000);
+      setSaveDisabled(true)
+    }, 1000);
 
     // evt.target.reset();
   }
@@ -96,8 +106,8 @@ function Profile(props) {
           <button
             type="submit"
             form="form__edit"
-            disabled={!isValid}
-            className={`profile__btnsave ${visiblebtnsave} ${isValid ? '' : 'profile__btn_disabled'}`}>
+            disabled={savedisabled}
+            className={`profile__btnsave ${visiblebtnsave} `}>
             <p className="profile__error-submit">{props.errormsg}</p>
             Сохранить
           </button>

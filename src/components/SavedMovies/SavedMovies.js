@@ -126,7 +126,7 @@ const SavedMovies = (props) => {
                 loader={loader}
                 btnstill={btnstill}
                 onSaveMovies={hendleDelClip}
-                onStill={handleClickStill}
+                onStill={handleClickStill}              
             />
         </main>
     )

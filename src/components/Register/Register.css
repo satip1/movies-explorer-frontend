@@ -111,6 +111,12 @@
   opacity: .8;
 }
 
+.register__formbtn:disabled {
+  color: #000000;
+  background: #E8E8E8; 
+  cursor: not-allowed;
+}
+
 .register__formbtn_disabled {
   color: #000000;
   background: #E8E8E8; 

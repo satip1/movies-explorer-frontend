@@ -121,6 +121,12 @@
   opacity: .8;
 }
 
+.login__formbtn:disabled {
+  color: #000000;
+  background: #E8E8E8;
+  cursor: not-allowed;
+}
+
 .login__formbtn_disabled {
   color: #000000;
   background: #E8E8E8;
