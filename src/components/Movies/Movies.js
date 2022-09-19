@@ -4,6 +4,8 @@ import { DURATION_SHORT_CLIP } from '../../utils/constants'
 
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 
 import {
     MIDDLE_SCREEN_WIDTH,
@@ -38,6 +40,7 @@ const Movies = (props) => {
 
 
     React.useEffect(() => {
+       
         let ls_searchword = '';
         let ls_clipchecked = 'false';
         let ls_clipsallfind = '[]';
@@ -57,15 +60,15 @@ const Movies = (props) => {
                 ls_clipsallfind = '[]';
             }
         }
-    
+
         setClipsAllFind(JSON.parse(ls_clipsallfind));
         setClipChecked(JSON.parse(ls_clipchecked));
 
-        setSearchWord(ls_searchword);   
+        setSearchWord(ls_searchword);
 
         handleResizeScreen();
 
-        window.addEventListener('resize', handleResizeScreen);      
+        window.addEventListener('resize', handleResizeScreen);
     }, [])
 
     React.useEffect(() => {
@@ -153,25 +156,29 @@ const Movies = (props) => {
     }
 
     return (
-        <main>
-            <SearchForm
-                mode={props.mode}
-                searchword={searchword}
-                clipchecked={clipchecked}
-                message={message}
-                onMessage={SetMessage}
-                searchMovies={searchMovies}
-            />
+        <>
+            <Header />
+            <main>
+                <SearchForm
+                    mode={props.mode}
+                    searchword={searchword}
+                    clipchecked={clipchecked}
+                    message={message}
+                    onMessage={SetMessage}
+                    searchMovies={searchMovies}
+                />
 
-            <MoviesCardList
-                mode={props.mode}
-                movies={target}
-                loader={loader}
-                btnstill={btnstill}
-                onSaveMovies={hendleSaveClip}
-                onStill={handleClickStill}                
-            />
-        </main>
+                <MoviesCardList
+                    mode={props.mode}
+                    movies={target}
+                    loader={loader}
+                    btnstill={btnstill}
+                    onSaveMovies={hendleSaveClip}
+                    onStill={handleClickStill}
+                />
+            </main>
+            <Footer />
+        </>
     )
 }
 

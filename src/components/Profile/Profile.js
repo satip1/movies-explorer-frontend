@@ -3,6 +3,7 @@ import './Profile.css';
 
 import CurrentUserContext from '../../context/CurrentUserContext';
 import FormValidation from "../FormValidation/FormValidation";
+import Header from '../Header/Header';
 
 function Profile(props) {
 
@@ -54,6 +55,8 @@ function Profile(props) {
   }
 
   return (
+    <>
+       <Header />
     <main className="page">
       <article className="profile">
 
@@ -128,9 +131,9 @@ function Profile(props) {
 
         </section>
 
-
       </article>
     </main>
+    </>
   )
 };
 

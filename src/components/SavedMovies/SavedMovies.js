@@ -4,6 +4,8 @@ import { DURATION_SHORT_CLIP } from '../../utils/constants'
 
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 
 import {
     MIDDLE_SCREEN_WIDTH,
@@ -46,7 +48,7 @@ const SavedMovies = (props) => {
         let index;
         time = target.map((elem) => {
             index = clipsall.find((item) => item.movieId === elem.movieId)
-            if (index.saved !== elem.saved) {elem.saved = index.saved; elem._id = index._id}
+            if (index.saved !== elem.saved) { elem.saved = index.saved; elem._id = index._id }
             return elem
         })
     }, [props.movies])
@@ -110,25 +112,29 @@ const SavedMovies = (props) => {
         // props.onsetTapSaved(true);
     }
     return (
-        <main>
-            <SearchForm
-                mode={props.mode}
-                searchword={``}
-                clipchecked={false}
-                message={message}
-                onMessage={SetMessage}
-                searchMovies={searchMovies}
-            />
+        <>
+            <Header />
+            <main>
+                <SearchForm
+                    mode={props.mode}
+                    searchword={``}
+                    clipchecked={false}
+                    message={message}
+                    onMessage={SetMessage}
+                    searchMovies={searchMovies}
+                />
 
-            <MoviesCardList
-                mode={props.mode}
-                movies={target}
-                loader={loader}
-                btnstill={btnstill}
-                onSaveMovies={hendleDelClip}
-                onStill={handleClickStill}              
-            />
-        </main>
+                <MoviesCardList
+                    mode={props.mode}
+                    movies={target}
+                    loader={loader}
+                    btnstill={btnstill}
+                    onSaveMovies={hendleDelClip}
+                    onStill={handleClickStill}
+                />
+            </main>
+            <Footer />
+        </>
     )
 }
 

@@ -4,17 +4,15 @@ import CurrentUserContext from '../../context/CurrentUserContext';
 
 
 
-const ProtectedRoute = ({ loggedIn, ...props }) => {
-
-  console.log('Запустился протект loggedIn ', loggedIn)
-  return loggedIn ? <Route {...props} /> : <Redirect to = "/" />;
-
-  //  return <Route {...props} /> ; 
+const ProtectedRoute = ({component: Component, ...props}) => {
+  console.log('запущено из защиты роутера props.loggedIn ', props.loggedIn)
+  return (
+    <Route>
+      {
+       props.loggedIn ? <Component {...props}/> : <Redirect to="/"/>
+      }
+    </Route>
+  )
 }
-
-
-
-
-
 
 export default ProtectedRoute;

@@ -7,7 +7,8 @@ const NotFound = () => {
 
     const handleBackClick = (evt) => {
         evt.preventDefault();
-        history.goBack();
+        // history.goBack();
+        history.go(-2);
        
     }
 

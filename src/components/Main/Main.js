@@ -6,17 +6,25 @@ import AboutProject from '../AboutProject/AboutProject'
 import Techs from '../Techs/Techs';
 import AboutMe from '../AboutMe/AboutMe';
 import Portfolio from '../Portfolio/Portfolio';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 
-function Main() {
+const Main = (props) => {
   return (
-    <main className="page">
-      <Promo />
-      <NavTab />
-      <AboutProject />
-      <Techs />
-      <AboutMe />
-      <Portfolio />
-    </main>
+    <>
+      <Header
+        onLoggedIn={props.onLoggedIn}
+      />
+      <main className="page">
+        <Promo />
+        <NavTab />
+        <AboutProject />
+        <Techs />
+        <AboutMe />
+        <Portfolio />
+      </main>
+      <Footer />
+    </>
   )
 }
 

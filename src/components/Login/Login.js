@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import './Login.css';
 
 import FormValidation from "../FormValidation/FormValidation";
+import Header from '../Header/Header';
 
 function Login(props) {
 
@@ -24,6 +25,8 @@ function Login(props) {
 
 
     return (
+        <> 
+         <Header/>
         <main className="page">
             <article className="login">
                 <h1 className="login__h1">Рады видеть!</h1>
@@ -79,7 +82,7 @@ function Login(props) {
                 </section>
             </article>
         </main>
-
+        </>
     )
 }
 

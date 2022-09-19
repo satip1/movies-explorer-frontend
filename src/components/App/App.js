@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Router, Switch, useHistory, useLocation } from 'react-router-dom';
+import { Route, Switch, useHistory, useLocation } from 'react-router-dom';
 import './App.css';
 
 import Header from '../Header/Header';
@@ -54,8 +54,8 @@ const App = () => {
     if (time == null || time.length == 0) {
       moviesapi.getMovies()
         .then((movies) => {
-          localStorage.setItem('bd', JSON.stringify(movies)) 
-        })     
+          localStorage.setItem('bd', JSON.stringify(movies))
+        })
         .catch((err) => { return setErrorMsg(err.message) })
     }
     else {
@@ -64,8 +64,8 @@ const App = () => {
   }
 
   // при первой отрисовке проверяем, есть ли jwt
-  React.useEffect(() => {     
-    updateMovies();
+  React.useEffect(() => {
+    // updateMovies();
     console.log('при первом монтировании компонента запущен')
     const jwt = localStorage.getItem('jwt');
     if (!jwt) return
@@ -85,7 +85,7 @@ const App = () => {
       })
   }, []);
 
- // обновляем локальное хранилище всех фильмов 
+  // обновляем локальное хранилище всех фильмов 
   React.useEffect(() => {
     localStorage.setItem('movies', JSON.stringify(movieslist));
   }, [movieslist])
@@ -105,10 +105,12 @@ const App = () => {
     }
   }
 
- 
+
   React.useEffect(() => {
+    updateMovies();
     if (loggedIn) {
-      Promise.all([mainapi.getUserData(token),  mainapi.getSavedMovies(token)])
+
+      Promise.all([mainapi.getUserData(token), mainapi.getSavedMovies(token)])
         .then(([user, saved]) => {
           const movies = JSON.parse(localStorage.getItem('bd'))
           const newmovies = movies.map((item) => {
@@ -155,10 +157,6 @@ const App = () => {
     }
   }, [token])
 
-  
-  React.useEffect(() => {
-    console.log('app.js ', loggedIn)
-  }, [loggedIn])
 
   // обработчик формы регистрации нового пользователя
   const handleRegSubmit = (name, email, password) => {
@@ -345,76 +343,63 @@ const App = () => {
   }
 
   return (
-    <>
-      <CurrentUserContext.Provider value={currentUser}>
+    <CurrentUserContext.Provider value={currentUser}>
 
-        <Switch>
-     
-          <Route path='/sign-in'>
-            <Header
-            />
-            <Login
-              onAuthUser={handleAuthSubmit}
-              errormsg={errormsg}
-              setErrorMsg={setErrorMsg}
-            />
-          </Route>
+      <Switch>
+        <ProtectedRoute exact path="/sign-in"
+          loggedIn={!loggedIn}
+          component={Login}
+          onAuthUser={handleAuthSubmit}
+          errormsg={errormsg}
+          setErrorMsg={setErrorMsg}
+        />
 
-          <Route path='/sign-up'>
-            <Header />
-            <Register
-              onRegUser={handleRegSubmit}
-              errormsg={errormsg}
-              setErrorMsg={setErrorMsg}
-            />
-          </Route>
+        <ProtectedRoute exact path="/sign-up"
+          loggedIn={!loggedIn}
+          component={Register}
+          onRegUser={handleRegSubmit}
+          errormsg={errormsg}
+          setErrorMsg={setErrorMsg}
+        />
 
-          <ProtectedRoute exact path="/profile" loggedIn={loggedIn}>
-            <Header />
-            <Profile
-              onEditUser={handleEditSubmit}
-              onGoOut={handleGoOut}
-              errormsg={errormsg}
-              setErrorMsg={setErrorMsg}
-            />
-          </ProtectedRoute>
+        <ProtectedRoute exact path="/profile"
+          loggedIn={loggedIn}
+          component={Profile}
+          onEditUser={handleEditSubmit}
+          onGoOut={handleGoOut}
+          errormsg={errormsg}
+          setErrorMsg={setErrorMsg}
+        />
 
-          <ProtectedRoute exact path="/movies" loggedIn={loggedIn}>                                               
-            <Header />
-            <Movies
-              mode='movies'
-              movies={movieslist}
-              moviessaved={moviessaved}
-              onSaveMovies={handleSaveMovies}
-            />
-            <Footer />
-          </ProtectedRoute>
+        <ProtectedRoute exact path="/movies"
+          loggedIn={loggedIn}
+          component={Movies}
+          mode='movies'
+          movies={movieslist}
+          moviessaved={moviessaved}
+          onSaveMovies={handleSaveMovies}
+        />
 
-          <ProtectedRoute exact path="/saved-movies" loggedIn={loggedIn}>
-            <Header />
-            <SavedMovies
-              mode='saved'
-              movies={moviessaved}
-              onDelSaved={delSavedMovies}
-            />
-            <Footer />
-          </ProtectedRoute>
+        <ProtectedRoute exact path="/saved-movies"
+          loggedIn={loggedIn}
+          component={SavedMovies}
+          mode='saved'
+          movies={moviessaved}
+          onDelSaved={delSavedMovies}
+        />
 
-          <Route exact path='/'>
-            <Header
-              onLoggedIn={loggedIn}
-            />
-            <Main />
-            <Footer />
-          </Route>
+        <Route exact path='/'>
+          <Main
+            onLoggedIn={loggedIn}
+          />
+        </Route>
 
-          <Route path='*'>
-            <NotFound />
-          </Route>
-  
-        </Switch>
-      </CurrentUserContext.Provider>
-    </>
+        <Route path='*'>
+          <NotFound />
+        </Route>
+
+      </Switch>
+    </CurrentUserContext.Provider>
   );
 }
 
