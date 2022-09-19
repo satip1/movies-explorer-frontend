@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import Navigation from "../Navigation/Navigation";
 import './Header.css'
 
-function Header() {
+function Header(props) {
 
     const location = useLocation();
     let styleHeader;
@@ -20,16 +20,18 @@ function Header() {
             break;
     }
 
-    return (
-        <header className="page">
-            <article className="wrapper">
-                <section className={styleHeader}>
-                    <Link to="/" className="header__logolink" />
-                    <Navigation />
-                </section>
-            </article>
-        </header >
-    )
+        return (
+            <header className="page">
+                <article className="wrapper">
+                    <section className={styleHeader}>
+                        <Link to="/" className="header__logolink" />
+                        <Navigation
+                           onLoggedIn={props.onLoggedIn}
+                        />
+                    </section>
+                </article>
+            </header >
+        )
 };
 
 export default Header;

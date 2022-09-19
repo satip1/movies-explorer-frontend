@@ -2,7 +2,7 @@ import React from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import './Navigation.css';
 
-function Navigation() {
+function Navigation(props) {
 
     // состояние отображения бургер-меню
     const [isBurgerVision, setBurgerVision] = React.useState('burger__menu burger__menu_vision');
@@ -52,6 +52,7 @@ function Navigation() {
 
     switch (location.pathname) {
         case '/':
+            if (props.onLoggedIn) return ( navReturn() )
             return (
                 <section className="navigate">
                     <Link to='/sign-up' className="navigate__linkland">Регистрация</Link>
@@ -77,8 +78,6 @@ function Navigation() {
         default:
             break;
     };
-
-
 
 };
 export default Navigation;

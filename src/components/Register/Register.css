@@ -75,6 +75,8 @@
 
 
 .register__error {
+  margin: 0;
+  padding: 0;
   font-family: 'Inter', Arial, sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -102,12 +104,27 @@
   border-radius: 3px;
   cursor: pointer;
   transition: .3s ease;
+  position: relative;
 }
 
 .register__formbtn:hover {
   opacity: .8;
 }
 
+.register__formbtn:disabled {
+  color: #000000;
+  background: #E8E8E8; 
+  cursor: not-allowed;
+}
+
+.register__formbtn_disabled {
+  color: #000000;
+  background: #E8E8E8; 
+}
+
+.register__formbtn_disabled:hover {
+  opacity: 1;
+}
 
 .register__reg {
   padding-top: 16px;
@@ -141,6 +158,20 @@
   border-bottom: 1px solid #FF6838;
 }
 
+.register__error-submit {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 13px;
+  text-align: center;
+  color: #FF004C;
+  position: absolute;
+  top: -22px;
+  left: 0;
+}
 
 
 @media screen and (max-width: 1120px)  {
